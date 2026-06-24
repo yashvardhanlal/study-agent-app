@@ -67,7 +67,7 @@ export async function POST(request: NextRequest) {
 
     const { error } = await supabase
       .from('concepts')
-      .upsert(payload, { onConflict: ['subject', 'concept'] });
+      .upsert(payload, { onConflict: 'subject,concept' });
 
     if (error) {
       console.error('[SAVE-CONCEPT] Supabase upsert error:', error);
